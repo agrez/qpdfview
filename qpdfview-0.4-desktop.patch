@@ -1,0 +1,11 @@
+--- miscellaneous/qpdfview.desktop.in.orig	2012-10-02 11:32:06.571057438 +0400
++++ miscellaneous/qpdfview.desktop.in	2012-10-02 11:32:25.604085118 +0400
+@@ -2,7 +2,7 @@
+ Type=Application
+ Terminal=false
+ Name=qpdfview
+-Icon=DATA_INSTALL_PATH/qpdfview.svg
++Icon=qpdfview
+ GenericName=PDF viewer
+ Comment=A tabbed PDF viewer using the poppler library.
+ Categories=Viewer;Office;
