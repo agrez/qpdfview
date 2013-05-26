@@ -1,10 +1,10 @@
 Name:		qpdfview
-Version:	0.4.1
+Version:	0.4.3
 Release:	1%{?dist}
 License:	GPLv2+
 Summary:	Tabbed PDF Viewer
 Url:		https://launchpad.net/qpdfview
-Source0:	https://launchpad.net/qpdfview/trunk/0.4.1/+download/%{name}-%{version}.tar.gz
+Source0:	https://launchpad.net/qpdfview/trunk/0.4.3/+download/%{name}-%{version}.tar.gz
 Patch0:		%{name}-0.4-desktop.patch
 BuildRequires:	desktop-file-utils file-devel cups-devel hicolor-icon-theme pkgconfig(poppler-qt4) pkgconfig(libspectre) pkgconfig(QtGui) pkgconfig(QtSql) pkgconfig(QtDBus) pkgconfig(zlib)
 %if 0%{?centos_version}
@@ -23,7 +23,8 @@ It provides a clear and simple graphical user interface using the Qt framework.
 %patch0
 
 %build
-`pkg-config --variable=exec_prefix QtCore`/bin/qmake \
+lrelease-qt4 qpdfview.pro
+qmake-qt4 \
     QMAKE_CFLAGS+="%{optflags}" \
     QMAKE_CXXFLAGS+="%{optflags}" \
     QMAKE_STRIP="" \
@@ -39,17 +40,31 @@ make %{?_smp_mflags}
 make INSTALL_ROOT=%{buildroot} install
 install -Dm 0644 icons/%{name}.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
+%find_lang %{name} --with-qt --without-mo
+# unknown language
+rm -f %{buildroot}/%{_datadir}/%{name}/%{name}_ast.qm
 
-%files
+%post	-p /sbin/ldconfig
+
+%postun	-p /sbin/ldconfig
+
+%files -f %{name}.lang
 %doc CHANGES CONTRIBUTORS COPYING README TODO
 %{_bindir}/%{name}
 %{_libdir}/%{name}/
-%{_datadir}/%{name}/
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/help.html
+%{_datadir}/%{name}/%{name}.svg
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_mandir}/man?/*
 
 %changelog
+* Sun May 26 2013 TI_Eugene <ti.eugene@gmail.com> 0.4.3-1
+- Version bump
+- Translations added
+- post/postun ldconfig added
+
 * Thu Mar 25 2013 TI_Eugene <ti.eugene@gmail.com> 0.4.1-1
 - New version
 - License changed to GPLv2+
