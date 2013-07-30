@@ -1,5 +1,5 @@
 Name:		qpdfview
-Version:	0.4.3
+Version:	0.4.4
 Release:	1%{?dist}
 License:	GPLv2+
 Summary:	Tabbed PDF Viewer
@@ -60,14 +60,17 @@ rm -f %{buildroot}/%{_datadir}/%{name}/%{name}_ast.qm
 %{_mandir}/man?/*
 
 %changelog
+* Tue Jul 30 2013 TI_Eugene <ti.eugene@gmail.com> 0.4.4-1
+- Version bump
+
 * Sun May 26 2013 TI_Eugene <ti.eugene@gmail.com> 0.4.3-1
 - Version bump
 - Translations added
 - post/postun ldconfig added
 
-* Thu Mar 25 2013 TI_Eugene <ti.eugene@gmail.com> 0.4.1-1
+* Mon Mar 25 2013 TI_Eugene <ti.eugene@gmail.com> 0.4.1-1
 - New version
 - License changed to GPLv2+
 
-* Thu Mar 23 2013 TI_Eugene <ti.eugene@gmail.com> 0.4-1
+* Sat Mar 23 2013 TI_Eugene <ti.eugene@gmail.com> 0.4-1
 - initial packaging for Fedora
