@@ -1,10 +1,10 @@
 Name:		qpdfview
-Version:	0.4.4
+Version:	0.4.5
 Release:	1%{?dist}
 License:	GPLv2+
 Summary:	Tabbed PDF Viewer
 Url:		https://launchpad.net/qpdfview
-Source0:	https://launchpad.net/qpdfview/trunk/0.4.3/+download/%{name}-%{version}.tar.gz
+Source0:	https://launchpad.net/qpdfview/trunk/0.4.5/+download/%{name}-%{version}.tar.gz
 Patch0:		%{name}-0.4-desktop.patch
 BuildRequires:	desktop-file-utils file-devel cups-devel hicolor-icon-theme pkgconfig(poppler-qt4) pkgconfig(libspectre) pkgconfig(QtGui) pkgconfig(QtSql) pkgconfig(QtDBus) pkgconfig(zlib)
 %if 0%{?centos_version}
@@ -60,6 +60,9 @@ rm -f %{buildroot}/%{_datadir}/%{name}/%{name}_ast.qm
 %{_mandir}/man?/*
 
 %changelog
+* Fri Sep 06 2013 TI_Eugene <ti.eugene@gmail.com> 0.4.5-1
+- Version bump
+
 * Tue Jul 30 2013 TI_Eugene <ti.eugene@gmail.com> 0.4.4-1
 - Version bump
 
