@@ -60,6 +60,9 @@ rm -f %{buildroot}/%{_datadir}/%{name}/%{name}_ast.qm
 %{_mandir}/man?/*
 
 %changelog
+* Sun Dec 08 2013 TI_Eugene <ti.eugene@gmail.com> 0.4.7-1
+- Version bump
+
 * Sun Oct 13 2013 TI_Eugene <ti.eugene@gmail.com> 0.4.6-1
 - Version bump
 
