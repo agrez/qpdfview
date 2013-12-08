@@ -1,5 +1,5 @@
 Name:		qpdfview
-Version:	0.4.6
+Version:	0.4.7
 Release:	1%{?dist}
 License:	GPLv2+
 Summary:	Tabbed PDF Viewer
