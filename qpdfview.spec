@@ -1,12 +1,12 @@
 Name:		qpdfview
-Version:	0.4.10
-Release:	2%{?dist}
+Version:	0.4.11
+Release:	1%{?dist}
 License:	GPLv2+
 Summary:	Tabbed PDF Viewer
 Url:		https://launchpad.net/qpdfview
 Source0:	https://launchpad.net/qpdfview/trunk/0.4.5/+download/%{name}-%{version}.tar.gz
 Patch0:		%{name}-0.4-desktop.patch
-BuildRequires:	desktop-file-utils file-devel cups-devel hicolor-icon-theme pkgconfig(poppler-qt4) pkgconfig(libspectre) pkgconfig(QtGui) pkgconfig(QtSql) pkgconfig(QtDBus) pkgconfig(zlib)
+BuildRequires:	desktop-file-utils file-devel cups-devel hicolor-icon-theme pkgconfig(poppler-qt4) pkgconfig(libspectre) pkgconfig(QtGui) pkgconfig(QtDBus) pkgconfig(zlib)
 %if 0%{?centos_version}
 Requires:	qt-sqlite
 %else
@@ -56,10 +56,14 @@ rm -f %{buildroot}/%{_datadir}/%{name}/%{name}_ast.qm
 %{_datadir}/%{name}/help*.html
 %{_datadir}/%{name}/%{name}.svg
 %{_datadir}/applications/%{name}.desktop
+%{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_mandir}/man?/*
 
 %changelog
+* Mon Jul 21 2014 TI_Eugene <ti.eugene@gmail.com> 0.4.11-1
+- Version bump
+
 * Sun Jun 08 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.4.10-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
 

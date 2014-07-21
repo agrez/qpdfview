@@ -1,11 +1,11 @@
---- miscellaneous/qpdfview.desktop.in.orig	2012-10-02 11:32:06.571057438 +0400
-+++ miscellaneous/qpdfview.desktop.in	2012-10-02 11:32:25.604085118 +0400
+--- miscellaneous/qpdfview.desktop.in.orig	2014-07-21 10:50:59.013043646 +0400
++++ miscellaneous/qpdfview.desktop.in	2014-07-21 10:51:12.011392966 +0400
 @@ -2,7 +2,7 @@
  Type=Application
  Terminal=false
  Name=qpdfview
 -Icon=DATA_INSTALL_PATH/qpdfview.svg
 +Icon=qpdfview
- GenericName=PDF viewer
- Comment=A tabbed PDF viewer using the poppler library.
+ GenericName=tabbed document viewer
+ Comment=A tabbed document viewer using Qt and the Poppler library.
  Categories=Viewer;Office;
