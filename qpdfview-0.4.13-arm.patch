@@ -1,0 +1,13 @@
+--- sources/documentview.cpp.orig	2014-11-19 12:59:30.017166782 +0300
++++ sources/documentview.cpp	2014-11-19 13:48:55.115179111 +0300
+@@ -786,8 +786,8 @@
+ 
+     // Fetch at most half of a line as centered on the given rectangle as possible.
+     const qreal pageWidth = m_pages.at(page - 1)->size().width();
+-    const qreal width = qMax(rect.width(), pageWidth / 2.0);
+-    const qreal x = qBound(0.0, rect.x() + rect.width() / 2.0 - width / 2.0, pageWidth - width);
++    const qreal width = qMax(rect.width(), pageWidth / 2.0f);
++    const qreal x = qBound(qreal(0.0), rect.x() + rect.width() / 2.0f - width / 2.0f, pageWidth - width);
+ 
+     const QRectF surroundingRect(x, rect.top(), width, rect.height());
+ 

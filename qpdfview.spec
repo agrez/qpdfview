@@ -1,10 +1,11 @@
 Name:		qpdfview
-Version:	0.4.12
+Version:	0.4.13
 Release:	1%{?dist}
 License:	GPLv2+
 Summary:	Tabbed PDF Viewer
 Url:		https://launchpad.net/qpdfview
-Source0:	https://launchpad.net/qpdfview/trunk/0.4.5/+download/%{name}-%{version}.tar.gz
+Source0:	https://launchpad.net/qpdfview/trunk/%{version}/+download/%{name}-%{version}.tar.gz
+Patch0:		%{name}-%{version}-arm.patch
 BuildRequires:	desktop-file-utils file-devel cups-devel hicolor-icon-theme pkgconfig(poppler-qt4) pkgconfig(libspectre) pkgconfig(QtGui) pkgconfig(QtDBus) pkgconfig(zlib)
 %if 0%{?centos_version}
 Requires:	qt-sqlite
@@ -17,8 +18,11 @@ qpdfview is a tabbed PDF viewer.
 It uses the Poppler library for rendering and CUPS for printing.
 It provides a clear and simple graphical user interface using the Qt framework.
 
+
 %prep
-%setup -q
+%setup0 -q
+%patch0 -p 0
+
 
 %build
 lrelease-qt4 qpdfview.pro
@@ -34,6 +38,7 @@ qmake-qt4 \
     qpdfview.pro
 make %{?_smp_mflags}
 
+
 %install
 make INSTALL_ROOT=%{buildroot} install
 install -Dm 0644 icons/%{name}.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
@@ -42,9 +47,12 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
 # unknown language
 rm -f %{buildroot}/%{_datadir}/%{name}/%{name}_ast.qm
 
+
 %post	-p /sbin/ldconfig
 
+
 %postun	-p /sbin/ldconfig
+
 
 %files -f %{name}.lang
 %doc CHANGES CONTRIBUTORS COPYING README TODO
@@ -59,6 +67,9 @@ rm -f %{buildroot}/%{_datadir}/%{name}/%{name}_ast.qm
 %{_mandir}/man?/*
 
 %changelog
+* Tue Nov 18 2014 TI_Eugene <ti.eugene@gmail.com> 0.4.13-1
+- Version bump
+
 * Mon Oct 06 2014 TI_Eugene <ti.eugene@gmail.com> 0.4.12-1
 - Version bump
 
