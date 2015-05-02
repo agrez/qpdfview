@@ -1,6 +1,6 @@
 Name:		qpdfview
 Version:	0.4.13
-Release:	1%{?dist}
+Release:	2%{?dist}
 License:	GPLv2+
 Summary:	Tabbed PDF Viewer
 Url:		https://launchpad.net/qpdfview
@@ -67,6 +67,9 @@ rm -f %{buildroot}/%{_datadir}/%{name}/%{name}_ast.qm
 %{_mandir}/man?/*
 
 %changelog
+* Sat May 02 2015 Kalev Lember <kalevlember@gmail.com> - 0.4.13-2
+- Rebuilt for GCC 5 C++11 ABI change
+
 * Tue Nov 18 2014 TI_Eugene <ti.eugene@gmail.com> 0.4.13-1
 - Version bump
 
