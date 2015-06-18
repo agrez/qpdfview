@@ -1,6 +1,6 @@
 Name:		qpdfview
 Version:	0.4.13
-Release:	2%{?dist}
+Release:	3%{?dist}
 License:	GPLv2+
 Summary:	Tabbed PDF Viewer
 Url:		https://launchpad.net/qpdfview
@@ -67,6 +67,9 @@ rm -f %{buildroot}/%{_datadir}/%{name}/%{name}_ast.qm
 %{_mandir}/man?/*
 
 %changelog
+* Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.4.13-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
 * Sat May 02 2015 Kalev Lember <kalevlember@gmail.com> - 0.4.13-2
 - Rebuilt for GCC 5 C++11 ABI change
 
