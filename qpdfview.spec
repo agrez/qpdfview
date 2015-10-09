@@ -1,11 +1,11 @@
 Name:		qpdfview
-Version:	0.4.13
-Release:	3%{?dist}
+Version:	0.4.15
+Release:	1%{?dist}
 License:	GPLv2+
 Summary:	Tabbed PDF Viewer
 Url:		https://launchpad.net/qpdfview
 Source0:	https://launchpad.net/qpdfview/trunk/%{version}/+download/%{name}-%{version}.tar.gz
-Patch0:		%{name}-%{version}-arm.patch
+Patch0:		%{name}-0.4.13-arm.patch
 BuildRequires:	desktop-file-utils file-devel cups-devel hicolor-icon-theme pkgconfig(poppler-qt4) pkgconfig(libspectre) pkgconfig(QtGui) pkgconfig(QtDBus) pkgconfig(zlib)
 %if 0%{?centos_version}
 Requires:	qt-sqlite
@@ -21,7 +21,7 @@ It provides a clear and simple graphical user interface using the Qt framework.
 
 %prep
 %setup0 -q
-%patch0 -p 0
+#patch0 -p 0
 
 
 %build
@@ -67,6 +67,9 @@ rm -f %{buildroot}/%{_datadir}/%{name}/%{name}_ast.qm
 %{_mandir}/man?/*
 
 %changelog
+* Fri Oct 09 2015 TI_Eugene <ti.eugene@gmail.com> 0.4.15-1
+- Version bump
+
 * Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.4.13-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
