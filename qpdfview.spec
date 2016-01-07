@@ -1,5 +1,5 @@
 Name:		qpdfview
-Version:	0.4.15
+Version:	0.4.16
 Release:	1%{?dist}
 License:	GPLv2+
 Summary:	Tabbed PDF Viewer
@@ -58,13 +58,15 @@ rm -f %{buildroot}/%{_datadir}/%{name}/%{name}_ast.qm
 %{_libdir}/%{name}/
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/help*.html
-#{_datadir}/%{name}/%{name}.svg
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_mandir}/man?/*
 
 %changelog
+* Thu Jan 07 2016 TI_Eugene <ti.eugene@gmail.com> 0.4.16-1
+- Version bump
+
 * Fri Oct 09 2015 TI_Eugene <ti.eugene@gmail.com> 0.4.15-1
 - Version bump
 
