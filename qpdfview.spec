@@ -1,6 +1,6 @@
 Name:		qpdfview
 Version:	0.4.16
-Release:	1%{?dist}
+Release:	2%{?dist}
 License:	GPLv2+
 Summary:	Tabbed PDF Viewer
 Url:		https://launchpad.net/qpdfview
@@ -24,10 +24,7 @@ It provides a clear and simple graphical user interface using the Qt framework.
 
 %build
 lrelease-qt4 qpdfview.pro
-qmake-qt4 \
-    QMAKE_CFLAGS+="%{optflags}" \
-    QMAKE_CXXFLAGS+="%{optflags}" \
-    QMAKE_STRIP="" \
+%{qmake_qt4} \
     PLUGIN_INSTALL_PATH="%{_libdir}/%{name}" \
     DATA_INSTALLPATH="%{_datadir}/%{name}" \
 %if 0%{?centos_version}
@@ -64,6 +61,9 @@ rm -f %{buildroot}/%{_datadir}/%{name}/%{name}_ast.qm
 %{_mandir}/man?/*
 
 %changelog
+* Tue Feb 02 2016 Rex Dieter <rdieter@fedoraproject.org> - 0.4.16-2
+- use %%qmake_qt4 macro to ensure proper build flags
+
 * Thu Jan 07 2016 TI_Eugene <ti.eugene@gmail.com> 0.4.16-1
 - Version bump
 
