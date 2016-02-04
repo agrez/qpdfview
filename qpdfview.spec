@@ -1,6 +1,6 @@
 Name:		qpdfview
 Version:	0.4.16
-Release:	2%{?dist}
+Release:	3%{?dist}
 License:	GPLv2+
 Summary:	Tabbed PDF Viewer
 Url:		https://launchpad.net/qpdfview
@@ -61,6 +61,9 @@ rm -f %{buildroot}/%{_datadir}/%{name}/%{name}_ast.qm
 %{_mandir}/man?/*
 
 %changelog
+* Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.16-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
+
 * Tue Feb 02 2016 Rex Dieter <rdieter@fedoraproject.org> - 0.4.16-2
 - use %%qmake_qt4 macro to ensure proper build flags
 
