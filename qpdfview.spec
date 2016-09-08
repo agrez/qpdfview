@@ -1,16 +1,27 @@
 Name:		qpdfview
 Version:	0.4.16
-Release:	3%{?dist}
+Release:	4%{?dist}
 License:	GPLv2+
 Summary:	Tabbed PDF Viewer
 Url:		https://launchpad.net/qpdfview
 Source0:	https://launchpad.net/qpdfview/trunk/%{version}/+download/%{name}-%{version}.tar.gz
-BuildRequires:	desktop-file-utils file-devel cups-devel hicolor-icon-theme pkgconfig(poppler-qt4) pkgconfig(libspectre) pkgconfig(QtGui) pkgconfig(QtDBus) pkgconfig(zlib)
-%if 0%{?centos_version}
-Requires:	qt-sqlite
-%else
-BuildRequires:	pkgconfig(ddjvuapi)
-%endif
+BuildRequires:  qt5-qttools
+BuildRequires:	cups-devel
+BuildRequires:  desktop-file-utils
+BuildRequires:  file-devel
+BuildRequires:  cups-devel
+BuildRequires:  qt5-linguist
+BuildRequires:  pkgconfig(poppler-qt5)
+BuildRequires:	pkgconfig(libspectre)
+BuildRequires:	pkgconfig(Qt5Concurrent)
+BuildRequires:	pkgconfig(Qt5Gui)
+BuildRequires:	pkgconfig(Qt5PrintSupport)
+BuildRequires:	pkgconfig(Qt5Sql)
+BuildRequires:	pkgconfig(Qt5Svg)
+BuildRequires:	pkgconfig(Qt5DBus)
+BuildRequires:	pkgconfig(Qt5Xml)
+BuildRequires:	pkgconfig(zlib)
+BuildRequires:	djvulibre-devel
 
 %description
 qpdfview is a tabbed PDF viewer.
@@ -23,13 +34,10 @@ It provides a clear and simple graphical user interface using the Qt framework.
 
 
 %build
-lrelease-qt4 qpdfview.pro
-%{qmake_qt4} \
+%{_qt5_bindir}/lrelease qpdfview.pro
+%{qmake_qt5} \
     PLUGIN_INSTALL_PATH="%{_libdir}/%{name}" \
     DATA_INSTALLPATH="%{_datadir}/%{name}" \
-%if 0%{?centos_version}
-    CONFIG+=without_djvu \
-%endif
     qpdfview.pro
 make %{?_smp_mflags}
 
@@ -61,6 +69,9 @@ rm -f %{buildroot}/%{_datadir}/%{name}/%{name}_ast.qm
 %{_mandir}/man?/*
 
 %changelog
+* Thu Sep 08 2016 Vaughan <devel at agrez dot net> - 0.4.16-4
+- Build against Qt5
+
 * Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.16-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
 
