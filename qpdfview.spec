@@ -81,6 +81,11 @@ fi
 %{_mandir}/man?/*
 
 %changelog
+* Wed Nov 29 2016 Vaughan <devel at agrez dot net> - 0.4.17-0.5.beta1
+- New release
+- Add missing %%post scripts
+- Bump release
+
 * Thu Sep 08 2016 Vaughan <devel at agrez dot net> - 0.4.16-4
 - Build against Qt5
 
