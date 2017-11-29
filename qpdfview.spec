@@ -1,10 +1,12 @@
+%global prerelease beta1
+
 Name:		qpdfview
-Version:	0.4.16
-Release:	4%{?dist}
+Version:	0.4.17
+Release:	0.5.%{?prerelease}%{?dist}
 License:	GPLv2+
 Summary:	Tabbed PDF Viewer
 Url:		https://launchpad.net/qpdfview
-Source0:	https://launchpad.net/qpdfview/trunk/%{version}/+download/%{name}-%{version}.tar.gz
+Source0:	https://launchpad.net/qpdfview/trunk/%{version}%{?prerelease}/+download/%{name}-%{version}%{?prerelease}.tar.gz
 BuildRequires:  qt5-qttools
 BuildRequires:	cups-devel
 BuildRequires:  desktop-file-utils
@@ -30,8 +32,7 @@ It provides a clear and simple graphical user interface using the Qt framework.
 
 
 %prep
-%setup0 -q
-
+%setup -n %{name}-%{version}%{?prerelease}
 
 %build
 %{_qt5_bindir}/lrelease qpdfview.pro
