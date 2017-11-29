@@ -52,10 +52,21 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
 rm -f %{buildroot}/%{_datadir}/%{name}/%{name}_ast.qm
 
 
-%post	-p /sbin/ldconfig
+%post
+/sbin/ldconfig
+/bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null || :
+/usr/bin/update-desktop-database &> /dev/null || :
 
+%postun
+/sbin/ldconfig
+if [ $1 -eq 0 ] ; then
+    /bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null
+    /usr/bin/gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
+fi
+/usr/bin/update-desktop-database &> /dev/null || :
 
-%postun	-p /sbin/ldconfig
+%posttrans
+/usr/bin/gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 
 %files -f %{name}.lang
